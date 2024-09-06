@@ -8,6 +8,7 @@ import Select from '../components/UI/select'
 import DataTable from '../components/data-table'
 import { column_transactions } from '../utils/constants'
 import { row_transactions } from '../utils/constants'
+import SortableTable from '../components/test'
 
 const Columns: React.FC = () => {
   // const [page, setPage] = useState(0);
@@ -42,7 +43,7 @@ const Columns: React.FC = () => {
         </Box>
         <DataTable rows={row_transactions} columns={column_transactions} total={row_transactions.length} page={pageIndex} rowsPerPage={rowsPerPage} handleChangePage={handleChangePage} handleChangeRowsPerPage={handleChangeRowsPerPage} />
 
-
+      <SortableTable />
       </Box>
     </Container>
   )

@@ -27,24 +27,32 @@ const CustomInputSelect: React.FC = () => {
    };
 
    return (
-      <Box display="flex" alignItems="center" width={'100%'} padding={'10px 16px'}>
+      <Box display="flex" alignItems="center" width={'100%'} >
          <StyledTextField
             variant="outlined"
             fullWidth
             InputProps={{
                endAdornment: (
-                  <InputAdornment position="end" sx={{ padding: 0 }}>
-                     <Divider orientation="vertical" flexItem sx={{ bgcolor: '#E9E9E9' }} />
+                  <InputAdornment position="end" sx={{ padding: 0 , }}>
+                     <Divider
+                        orientation="vertical"
+                        flexItem
+                        sx={{
+                           height: 'auto', 
+                           alignSelf: 'stretch', 
+                           bgcolor: '#E9E9E9',
+                        }}
+                     />
                      <Select
                         value={selectValue}
                         onChange={handleSelectChange}
-                        displayEmpty
+                        displayEmpty   
                         inputProps={{ 'aria-label': 'Without label' }}
                         sx={{
                            borderRadius: '0px 10px 10px 0px',
-                           '.MuiOutlinedInput-notchedOutline': { border: 'none' }, // Borderni yashirish
-                           '&.Mui-focused .MuiOutlinedInput-notchedOutline': { border: 'none' }, // Focus holatida borderni yashirish
-                           marginLeft: '8px',
+                           '.MuiOutlinedInput-notchedOutline': { border: 'none' }, 
+                           '&.Mui-focused .MuiOutlinedInput-notchedOutline': { border: 'none' }, 
+                           marginLeft: '10px',
                         }}
                      >
                         <MenuItem value="Полный бак">Полный бак</MenuItem>

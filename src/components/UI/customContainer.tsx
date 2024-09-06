@@ -15,7 +15,7 @@ const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
          sx={{
             paddingX: '20px',
            margin: '0 auto',
-            // Siz yaratgan custom breakpoints bilan ishlash
+          
             width: '100%',
             maxWidth:{
                xs: '400',

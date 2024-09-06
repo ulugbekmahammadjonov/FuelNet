@@ -8,6 +8,8 @@ import {
    TableRow,
    TableSortLabel,
    Paper,
+   FormControl,
+   Input,
 } from '@mui/material';
 import { ArrowDownward, ArrowUpward } from '@mui/icons-material';
 
@@ -40,47 +42,39 @@ const SortableTable: React.FC = () => {
    });
 
    return (
-      <TableContainer component={Paper}>
-         <Table>
-            <TableHead>
-               <TableRow>
-                  <TableCell>
-                     <TableSortLabel
-                        active={orderBy === 'name'}
-                        direction={orderBy === 'name' ? order : 'asc'}
-                        onClick={() => handleRequestSort('name')}
-                     >
-                        Name
-                        {orderBy === 'name' ? (
-                           order === 'desc' ? <ArrowDownward /> : <ArrowUpward />
-                        ) : null}
-                     </TableSortLabel>
-                  </TableCell>
-                  <TableCell>
-                     <TableSortLabel
-                        active={orderBy === 'age'}
-                        direction={orderBy === 'age' ? order : 'asc'}
-                        onClick={() => handleRequestSort('age')}
-                     >
-                        Age
-                        {orderBy === 'age' ? (
-                           order === 'desc' ? <ArrowDownward /> : <ArrowUpward />
-                        ) : null}
-                     </TableSortLabel>
-                  </TableCell>
-               </TableRow>
-            </TableHead>
-            <TableBody>
-               {sortedRows.map((row) => (
-                  <TableRow key={row.id}>
-                     <TableCell>{row.name}</TableCell>
-                     <TableCell>{row.age}</TableCell>
-                  </TableRow>
-               ))}
-            </TableBody>
-         </Table>
-      </TableContainer>
-   );
+      <div style={{ backgroundColor: "white", border: "2px solid rgb(233, 233, 233)", padding: "5px", borderRadius: "8px" }}>
+         {/* <form style={{ display: "flex", gap: "0px" , borderRadius: "8px", backgroundColor: "white" }}> */}
+            <input
+               type="text"
+               style={{
+                  border: "none",
+                  padding: "8px",
+                  flex: 1,
+                  borderRight: "2px solid rgb(233, 233, 233)", // Vertikal chiziq
+                  outline: "none",
+                  backgroundColor: "white",
+                  color: "black",
+               }}
+            />
+            <select
+               name="cars"
+               style={{
+                  border: "none",
+                  padding: "8px",
+                  borderLeft: "none", // Chegarani selectga berish shart emas
+                  outline: "none",
+                  backgroundColor: "white",
+                  color: "black",
+               }}
+            >
+               <option value="1">Полный бак</option>
+               <option value="2"></option>
+               <option value="3">3</option>
+            </select>
+         {/* </form> */}
+      </div>
+
+   )
 };
 
 export default SortableTable;

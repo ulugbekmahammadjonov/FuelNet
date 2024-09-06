@@ -3,11 +3,11 @@ import { createTheme } from "@mui/material/styles";
 const theme = createTheme({
   breakpoints: {
     values: {
-      xs: 0, // Extra-small
-      sm: 600, // Small
-      md: 800, // Medium
-      lg: 1200, // Large (custom qiymat)
-      xl: 1392, // Extra-large
+      xs: 0, 
+      sm: 600, 
+      md: 800, 
+      lg: 1200, 
+      xl: 1392, 
     },
   },
   palette: {
