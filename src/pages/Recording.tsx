@@ -1,12 +1,15 @@
+import Container from '../components/UI/customContainer'
+import Helmet from '../components/helmet'
 import React from 'react'
 
 
 const Recording = () => {
   return (
-    <div>
+    <Container>
+      <Helmet title="Запись" />
       Recording
       
-    </div>
+    </Container>
   )
 }
 

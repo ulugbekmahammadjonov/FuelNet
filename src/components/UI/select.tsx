@@ -1,11 +1,7 @@
 import { Box } from '@mui/material';
 import React, { ChangeEvent } from 'react';
 
-interface SelectProps {
-   options: { value: number | string; }[];
-   defaultValue?: string | number;
-   onChange: (value: string | number) => void;
-}
+import { SelectProps } from '../../types/types';
 
 const Select: React.FC<SelectProps> = ({ options, defaultValue, onChange }) => {
 

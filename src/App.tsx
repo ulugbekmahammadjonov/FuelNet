@@ -13,10 +13,9 @@ function App() {
   return (
     <div>
       <Header />
-
-      <Suspense fallback={<div>Loading...</div>}>{routing} </Suspense>
-
-
+      <Suspense fallback={<div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>Loading...</div>}>
+        {routing}
+      </Suspense>
       <Footer />
     </div>
   )

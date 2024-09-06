@@ -1,69 +1,38 @@
 import React from 'react';
-import { TextField, MenuItem, Select, InputAdornment, Box, Divider, SelectChangeEvent } from '@mui/material';
-import { styled } from '@mui/system';
-
-const StyledTextField = styled(TextField)(({ theme }) => ({
-   // Sozlamalar
-   '& .MuiOutlinedInput-root': {
-      borderRadius: '10px',
-      paddingRight: 0,
-      '& .MuiOutlinedInput-notchedOutline': {
-         borderColor: '#E9E9E9', // Normal border rang
-      },
-      '&:hover .MuiOutlinedInput-notchedOutline': {
-         borderColor: '#E9E9E9', // Hover holatida border rang
-      },
-      '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
-         borderColor: '#E9E9E9', // Focus holatida border rang
-      },
-   },
-}));
 
 const CustomInputSelect: React.FC = () => {
-   const [selectValue, setSelectValue] = React.useState<string>('Полный бак');
-
-   const handleSelectChange = (event: SelectChangeEvent<string>) => {
-      setSelectValue(event.target.value as string);
-   };
-
    return (
-      <Box display="flex" alignItems="center" width={'100%'} >
-         <StyledTextField
-            variant="outlined"
-            fullWidth
-            InputProps={{
-               endAdornment: (
-                  <InputAdornment position="end" sx={{ padding: 0 , }}>
-                     <Divider
-                        orientation="vertical"
-                        flexItem
-                        sx={{
-                           height: 'auto', 
-                           alignSelf: 'stretch', 
-                           bgcolor: '#E9E9E9',
-                        }}
-                     />
-                     <Select
-                        value={selectValue}
-                        onChange={handleSelectChange}
-                        displayEmpty   
-                        inputProps={{ 'aria-label': 'Without label' }}
-                        sx={{
-                           borderRadius: '0px 10px 10px 0px',
-                           '.MuiOutlinedInput-notchedOutline': { border: 'none' }, 
-                           '&.Mui-focused .MuiOutlinedInput-notchedOutline': { border: 'none' }, 
-                           marginLeft: '10px',
-                        }}
-                     >
-                        <MenuItem value="Полный бак">Полный бак</MenuItem>
-                        <MenuItem value="Половина бака">Половина бака</MenuItem>
-                        <MenuItem value="Четверть бака">Четверть бака</MenuItem>
-                     </Select>
-                  </InputAdornment>
-               ),
+      <div style={{ backgroundColor: "white", border: "2px solid rgb(233, 233, 233)", borderRadius: "8px", width: "100%" }}>
+         <input
+            type="text"
+            style={{
+               maxWidth: "320px",
+               border: "none",
+               padding: "10px",
+               flex: 1,
+               borderRight: "2px solid rgb(233, 233, 233)", 
+               outline: "none",
+               backgroundColor: "white",
+               color: "black",
             }}
          />
-      </Box>
+         <select
+            name="cars"
+            style={{
+               border: "none",
+               padding: "8px",
+               outline: "none",
+               backgroundColor: "white",
+               color: "black",
+               textAlign: "left", // Matnni o'ngga yopishtirish
+               // paddingRight: "10px", // O'ng tarafga biroz joy qoldirish
+            }}
+         >
+            <option value="1">Полный бак</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+         </select>
+      </div>
    );
 };
 

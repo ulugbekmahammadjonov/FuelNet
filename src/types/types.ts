@@ -44,3 +44,16 @@ export interface IRowTransaction {
   volume: string;
   summa: string;
 }
+export interface InputProps {
+  label: string;
+  width?: string;
+  defaultValue?: string;
+  padding?: string;
+  fontSize?: string;
+  readOnly?: boolean;
+}
+ export interface SelectProps {
+  options: { value: number | string }[];
+  defaultValue?: string | number;
+  onChange: (value: string | number) => void;
+}

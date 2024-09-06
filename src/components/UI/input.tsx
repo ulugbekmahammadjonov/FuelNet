@@ -1,14 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
+import { InputProps } from '../../types/types';
 
-interface InputProps {
-   label: string;
-   width?: string;
-   defaultValue?: string;
-   padding?: string;
-   fontSize?: string;
-   readOnly?: boolean;
-}
 
 const Input: React.FC<InputProps> = ({
    label,

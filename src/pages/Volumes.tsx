@@ -1,10 +1,13 @@
+import Helmet from '../components/helmet'
+import Container from '../components/UI/customContainer'
 import React from 'react'
 
 const Volumes = () => {
   return (
-    <div>
+    <Container>
+      <Helmet title="Объемы" />
       Volumes
-    </div>
+    </Container>
   )
 }
 

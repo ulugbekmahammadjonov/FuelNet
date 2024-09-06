@@ -7,7 +7,7 @@ import { card_data } from '../utils/constants';
 import { column_data } from '../utils/constants';
 import Input from './UI/input';
 import CustomInputSelect from './UI/input-select';
-import SortableTable from './test';
+
 
 const CustomCard: React.FC = () => {
    const [selectValue, setSelectValue] = React.useState('Полный бак');
@@ -17,13 +17,13 @@ const CustomCard: React.FC = () => {
    };
 
    return (
-      <Grid container spacing={{ xs: 2, md: 3 }} sx={{ minWidth: 275, justifyContent: 'center', mb: 3 }}>
+      <Grid container spacing={{ xs: 2, md: 3 }} sx={{ minWidth: 300, justifyContent: 'center', mb: 3 }}>
          {column_data.map(({ digit, isActive }) => (
             <Grid
                size={{ xs: 12, sm: 8, md: 6, lg: 4 }}
                key={digit}
 
-               sx={{ display: 'flex' }}
+               
             >
                <Card sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between', border: isActive ? '2px solid #3ABAAA' : '2px solid #FF4E4E', borderRadius: '10px', position: 'relative', height: '100%' }}>
                   <CardContent sx={{ padding: '8px 16px 16px 16px', flexGrow: 1 }}>
@@ -35,7 +35,7 @@ const CustomCard: React.FC = () => {
                            sx={{ padding: '6px 12px', color: 'secondary.main', backgroundColor: isActive ? "primary.main" : 'error.main', position: 'absolute', top: "0", left: "0", right: "0", width: "112px", margin: "0 auto", textAlign: "center", borderRadius: "0 0 10px 10px" }}>
                            {isActive ? "Подключена" : "Нет связи"}
                         </Box>
-                        <AppsIcon sx={{ color: 'text.main' }} />
+                        <AppsIcon sx={{ color: 'text.main', ":hover": { color: 'primary.main', cursor: 'pointer' } }} />
                      </Box>
 
 
@@ -53,7 +53,7 @@ const CustomCard: React.FC = () => {
 
                      {/* Select and Button */}
                      <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-
+                        <CustomInputSelect/>
                      </Box>
                      <Button
                         startIcon={<PlayCircleOutlineIcon />}

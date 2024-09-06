@@ -14,7 +14,7 @@ const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
          maxWidth={false}
          sx={{
             paddingX: '20px',
-           margin: '0 auto',
+            margin: '0 auto',
           
             width: '100%',
             maxWidth:{
