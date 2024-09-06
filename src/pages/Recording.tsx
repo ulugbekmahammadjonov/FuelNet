@@ -1,3 +1,4 @@
+
 import Container from '../components/UI/customContainer'
 import Helmet from '../components/helmet'
 import React from 'react'
@@ -8,7 +9,7 @@ const Recording = () => {
     <Container>
       <Helmet title="Запись" />
       Recording
-      
+
     </Container>
   )
 }

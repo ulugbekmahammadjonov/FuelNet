@@ -2,30 +2,43 @@ import React from 'react';
 
 const CustomInputSelect: React.FC = () => {
    return (
-      <div style={{ backgroundColor: "white", border: "2px solid rgb(233, 233, 233)", borderRadius: "8px", width: "100%" }}>
+      <div style={{
+         backgroundColor: "white",
+         border: "2px solid rgb(233, 233, 233)",
+         borderRadius: "8px", 
+         display: "flex",
+         width: "100%",
+         alignItems: "center", 
+         maxWidth: "100%",
+      }}>
          <input
             type="text"
             style={{
-               maxWidth: "320px",
+               flex: 1, 
                border: "none",
                padding: "10px",
-               flex: 1,
-               borderRight: "2px solid rgb(233, 233, 233)", 
+               borderRight: "2px solid rgb(233, 233, 233)",
                outline: "none",
                backgroundColor: "white",
                color: "black",
+               borderTopLeftRadius: "8px",
+               borderBottomLeftRadius: "8px", 
+               minWidth: "0",
             }}
+           
          />
          <select
             name="cars"
             style={{
                border: "none",
-               padding: "8px",
+               padding: "10px",
                outline: "none",
                backgroundColor: "white",
                color: "black",
-               textAlign: "left", // Matnni o'ngga yopishtirish
-               // paddingRight: "10px", // O'ng tarafga biroz joy qoldirish
+               borderTopRightRadius: "8px", 
+               borderBottomRightRadius: "8px", 
+               minWidth: "120px", 
+               maxWidth: "200px", 
             }}
          >
             <option value="1">Полный бак</option>
