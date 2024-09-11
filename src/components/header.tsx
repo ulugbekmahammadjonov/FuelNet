@@ -68,8 +68,8 @@ export default function Header() {
 
             <AppBar position="static" sx={{ width: '100%', height: '50px', bgcolor: 'secondary.main', boxShadow: 'none' }} >
 
-               <Toolbar disableGutters>
-                  <Button sx={{ display: { xs: 'block', md: 'none' } }} onClick={toggleDrawer(true)}><MenuIcon /></Button>
+               <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <Button sx={{ display: { xs: 'block', md: 'none' } }} onClick={toggleDrawer(true)}><MenuIcon  /></Button>
                   <Drawer open={open} onClose={toggleDrawer(false)}>
                      {DrawerList}
                   </Drawer>

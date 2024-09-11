@@ -10,31 +10,31 @@ import Input from './UI/input';
 import CustomInputSelect from './UI/input-select';
 
 const CustomCard: React.FC = () => {
-   const [columnsToShow, setColumnsToShow] = useState(3);
+   const [columnsToShow, setColumnsToShow] = useState(5);
 
-   // `Select` onChange funksiyasi qiymatni yangilaydi
+  
    const handleSelectChange = (value: number) => {
       setColumnsToShow(Number(value));
    };
 
-   // Ma'lumotlar sonini columnsToShow ga mos ravishda boshqarish
-   const visibleColumns = column_data.slice(0, columnsToShow * 3); // columnsToShow ga mos ravishda 9, 12 yoki 15 ma'lumotni ko'rsatish
+   
+   const visibleColumns = column_data.slice(0, columnsToShow * 3); 
 
    return (
-      <Box component={'div'} sx={{ flexGrow: 1, margin: "0 auto", maxWidth: "1200px", width: "100%" }}>
+      <Box component={'div'} sx={{  margin: "0 auto", maxWidth: "1200px", width: "100%", display: "flex", flexDirection: "column", minHeight: "100px",height: "100%", overflow:"hidden", flexShrink: 1, flexGrow: 1 }}>
          <Box component={'div'} sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
             <Typography variant="h6" sx={{ color: "text.primary", fontWeight: "bold", fontSize: "16px" }}>Колонки</Typography>
             <Box component={"div"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} gap={2}>
                <Typography sx={{ color: "text.primary", fontSize: "14px" }}>Вместимость ряда</Typography>
 
-               <Select onChange={handleSelectChange} defaultValue={3} options={[3, 4, 5].map((value) => ({ value }))} />
+               <Select onChange={handleSelectChange} defaultValue={5} options={[3, 4, 5].map((value) => ({ value }))} />
             </Box>
          </Box>
 
-         <Grid container spacing={{ xs: 1, md: 2 }}>
+         <Grid container spacing={{ xs: 1, md: 2 }} >
             {visibleColumns.map(({ digit, isActive }) => (
-               <Grid key={digit} size={{ xs: 12 / columnsToShow }}>
-                  <Card sx={{ aspectRatio: "4/3", maxHeight: { xs: "100px", md: "140px", lg: "135px" }, maxWidth: "200px", border: isActive ? '1px solid #3ABAAA' : '1px solid #FF4E4E', borderRadius: '10px', position: 'relative' }}>
+               <Grid key={digit} size={{ xs: 12 / columnsToShow }} >
+                  <Card sx={{ aspectRatio: "4/3", maxHeight: { xs: "100px", md: "120px", lg: "135px" }, maxWidth: "200px", border: isActive ? '1px solid #3ABAAA' : '1px solid #FF4E4E', borderRadius: '10px', position: 'relative' }}>
                      <CardContent sx={{ padding: { xs: "2px" }, }}>
                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', }}>
                            <Typography sx={{ fontWeight: "bold", fontSize: { xs: "8px", md: "12px" } }}>
