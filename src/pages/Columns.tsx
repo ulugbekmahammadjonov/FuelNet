@@ -1,53 +1,63 @@
-import React, { useState } from 'react'
-import { Box, Typography, Chip } from '@mui/material'
-import Container from '../components/UI/customContainer'
-import Card from '../components/card'
-import Input from '../components/UI/input'
-import Select from '../components/UI/select'
-import DataTable from '../components/data-table'
-import { column_transactions } from '../utils/constants'
-import { row_transactions } from '../utils/constants'
-import Helmet from '../components/helmet'
-
+import React, { useState, useEffect } from 'react';
+import { Box } from '@mui/material';
+import Container from '../components/UI/customContainer';
+import Card from '../components/card';
+import DataTable from '../components/data-table';
+import { column_transactions } from '../utils/constants';
+import { row_transactions } from '../utils/constants';
+import Helmet from '../components/helmet';
 
 const Columns: React.FC = () => {
-  
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [pageIndex, setPageIndex] = useState(0);
+  const [cardHeight, setCardHeight] = useState(300); // Initial height for the card
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPageIndex(newPage);
   };
-  const handleChangeRowsPerPage = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => {
+
+  const handleChangeRowsPerPage = (event: React.ChangeEvent<HTMLInputElement>) => {
     setRowsPerPage(+event.target.value);
     setPageIndex(0);
   };
+
+  // Scroll eventni kuzatish va card balandligini dinamik o'zgartirish
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const newHeight = Math.max(100, 300 - scrollY / 5); // Minimal balandlik 100px bo'ladi
+      setCardHeight(newHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <Container >
+    <Container>
       <Helmet title="Колонки" />
-      <Box component={'div'} sx={{ p: 2 }}>
-        <Box component={'div'} sx={{ display: 'flex', justifyContent: 'space-between', mt: 2, mb: 2 }}>
-          <Typography variant="h6" sx={{ color: "text.primary", fontWeight: "bold" }}>Колонки</Typography>
-          <Box component={"div"} display={"flex"} justifyContent={"space-between"} alignItems={"center"} gap={2}>
-            <Typography sx={{ color: "text.primary", fontSize: "14px" }}>Вместимость ряда</Typography>
-
-            <Select onChange={() => { }} defaultValue={3} options={[1, 2, 3].map((value) => ({ value }))} />
-          </Box>
+      <Box component={'div'} sx={{ height: "100vh", display: "flex", flexDirection: "column" }}>
+        <Box sx={{ flexGrow: 1, height:` ${cardHeight}`}}>
+          <Card  /> {/* Card balandligi dinamik o'zgaradi */}
         </Box>
-        <Card />
-        <Box component={'div'} sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2 }}>
-          <Typography variant="h6" sx={{ color: "text.primary", fontWeight: "bold", fontSize: { xs: "14px", md: "16px" } }}>Неоплаченные операции</Typography>
-
-          <Chip label={`${row_transactions.length} операций`} variant="outlined" />
+        <Box sx={{ flexShrink: 0, width: "100%", mt: 1 }}>
+          <DataTable
+            rows={row_transactions}
+            columns={column_transactions}
+            total={row_transactions.length}
+            page={pageIndex}
+            rowsPerPage={rowsPerPage}
+            handleChangePage={handleChangePage}
+            handleChangeRowsPerPage={handleChangeRowsPerPage}
+          />
         </Box>
-        <DataTable rows={row_transactions} columns={column_transactions} total={row_transactions.length} page={pageIndex} rowsPerPage={rowsPerPage} handleChangePage={handleChangePage} handleChangeRowsPerPage={handleChangeRowsPerPage} />
-
-
       </Box>
     </Container>
-  )
-}
+  );
+};
 
-export default Columns
+export default Columns;

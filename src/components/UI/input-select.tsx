@@ -1,51 +1,36 @@
 import React from 'react';
-
+import { Box, Typography, OutlinedInput, FormControl, FormHelperText, Select, MenuItem } from '@mui/material';
 const CustomInputSelect: React.FC = () => {
    return (
-      <div style={{
-         backgroundColor: "white",
-         border: "2px solid rgb(233, 233, 233)",
-         borderRadius: "8px", 
-         display: "flex",
-         width: "100%",
-         alignItems: "center", 
-         maxWidth: "100%",
-      }}>
-         <input
-            type="text"
-            style={{
-               flex: 1, 
-               border: "none",
-               padding: "10px",
-               borderRight: "2px solid rgb(233, 233, 233)",
-               outline: "none",
-               backgroundColor: "white",
-               color: "black",
-               borderTopLeftRadius: "8px",
-               borderBottomLeftRadius: "8px", 
-               minWidth: "0",
-            }}
-           
-         />
-         <select
-            name="cars"
-            style={{
-               border: "none",
-               padding: "10px",
-               outline: "none",
-               backgroundColor: "white",
-               color: "black",
-               borderTopRightRadius: "8px", 
-               borderBottomRightRadius: "8px", 
-               minWidth: "120px", 
-               maxWidth: "200px", 
-            }}
-         >
-            <option value="1">Полный бак</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-         </select>
-      </div>
+      <Box sx={{padding: "0", margin: "0" }} >
+         <FormControl sx={{ display: "inline" }}>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+               <OutlinedInput
+
+                  type="text"
+
+
+                  sx={{
+                     maxWidth: '100px',
+                     border: 'none',
+                     borderRight: 'none',
+                     borderRadius: '10px 0px 0px 10px',
+                     backgroundColor: '#f5f5f5',
+                     outline: 'none',
+                     // color: "#69757A",
+                     height: { xs: '13px', md: '15px', lg: '18px' },
+                     fontSize: { xs: '10px', md: '12px', lg: '14px' }
+                  }}
+
+               />
+               <Select defaultValue={10} sx={{ border: 'none', borderRadius: '0px 10px 10px 0px', height: { xs: '13px', md: '15px', lg: '18px' }, fontSize: { xs: "6px", md: "10px" } }}>
+                  <MenuItem value={10}>Полный бак</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+               </Select>
+            </Box>
+         </FormControl>
+      </Box>
    );
 };
 

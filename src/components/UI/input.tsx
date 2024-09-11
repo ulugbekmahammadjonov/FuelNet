@@ -1,41 +1,46 @@
-import { Box } from '@mui/material';
+import { Box, Typography, OutlinedInput, FormControl, FormHelperText } from '@mui/material';
 import React from 'react';
 import { InputProps } from '../../types/types';
+import { InputOutlined } from '@mui/icons-material';
 
 
-const Input: React.FC<InputProps> = ({
+const CustomInput: React.FC<InputProps> = ({
    label,
-   width,
+
    defaultValue,
-   padding = '10px',
-   fontSize = '14px',
-   readOnly = false
+
+   readOnly = false,
+   sx
 }) => {
 
 
- 
-   return (
-      <Box sx={{ marginBottom: '15px' }}>
-         <label style={{ display: 'block', fontSize:"12px", }}>{label}</label>
-         <input
 
-            type="text"
-            defaultValue={defaultValue}
-            readOnly={readOnly}
-            style={{
-               width: width,
-               padding: padding,
-               fontSize: fontSize,
-               border: '1px solid #E9E9E9',
-               borderRadius: '8px',
-               backgroundColor: '#f5f5f5',
-               outline: 'none',
-               color: "#69757A",
-               
-            }}
-         />
+   return (
+      <Box >
+         <FormControl >
+            {/* <label style={{ display: 'block', fontSize: "12px", }}>{label}</label> */}
+            <FormHelperText sx={{ fontSize: { xs: "6px",md: "9px" }, margin: '0', whiteSpace: 'nowrap' }}>{label}</FormHelperText>
+            <OutlinedInput
+
+               type="text"
+               defaultValue={defaultValue}
+               readOnly={readOnly}
+
+               sx={{
+
+                  border: '1px solid #E9E9E9',
+                  borderRadius: '8px',
+                  backgroundColor: '#f5f5f5',
+                  outline: 'none',
+                  // color: "#69757A",
+                  height: { xs: '13px', md: '15px', lg: '18px' },
+                  ...sx
+               }}
+
+            />
+         </FormControl>
       </Box>
    );
 };
 
-export default Input;
+export default CustomInput;

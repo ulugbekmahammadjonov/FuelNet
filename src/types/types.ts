@@ -51,9 +51,28 @@ export interface InputProps {
   padding?: string;
   fontSize?: string;
   readOnly?: boolean;
+  sx?: object;
 }
  export interface SelectProps {
   options: { value: number | string }[];
   defaultValue?: string | number;
   onChange: (value: string | number) => void;
+}
+export interface Row {
+  [key: string]: any;
+}
+
+export interface DataTableProps {
+  total?: number;
+  rows?: Row[];
+  columns?: IColumnTransaction[];
+  page?: number;
+  rowsPerPage?: number;
+  handleChangePage?: (
+    event: React.MouseEvent<HTMLButtonElement> | null,
+    newPage: number
+  ) => void;
+  handleChangeRowsPerPage?: (
+    event: React.ChangeEvent<HTMLInputElement>
+  ) => void;
 }

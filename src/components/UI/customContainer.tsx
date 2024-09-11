@@ -13,16 +13,13 @@ const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
       <MuiContainer
          maxWidth={false}
          sx={{
-            paddingX: '20px',
-            margin: '0 auto',
+            paddingX: '10px',
+            // margin: '0 auto',
           
             width: '100%',
             maxWidth:{
-               xs: '400',
-               sm: '680px',
-               md: '900px',
-               lg: '1200px',
-               xl: '1392px',
+              
+               xl: '1500px',
             }
             
          }}

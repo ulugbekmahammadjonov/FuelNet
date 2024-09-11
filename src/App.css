@@ -1,18 +1,15 @@
-/* #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-} */
-#root{
 
+html, body {
+  overflow: hidden;
+}
+#root {
   background-color: #fff;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
-.active{
-  color: #3ABAAA  !important  ;
+.active span {
+  color: #3abaaa !important  ;
 }
- 

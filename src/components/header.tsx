@@ -16,7 +16,7 @@ import UserImg from '../assets/images/user.png';
 
 
 export default function Header() {
-
+   const [active, setActive] = useState(false);
    const [open, setOpen] = useState(false);
 
    const toggleDrawer = (newOpen: boolean) => () => {
@@ -36,7 +36,7 @@ export default function Header() {
                >
                   <NavLink
                      to={path}
-                     className={({ isActive }) => (isActive ? 'active' : "")}
+                     className={({ isActive }) => isActive ? 'active' :""}
                      style={{ color: title === "Видеофиксация" ? '#FF4E4E' : "#171429", fontWeight: '500', textDecoration: 'none', position: 'relative' }}>
                      {title}
                      {title === "Видеофиксация" && (
@@ -63,29 +63,27 @@ export default function Header() {
 
 
    return (
-      <Box sx={{ flexGrow: 1, borderBottom: '1px solid #E5E5E5', width: '100%', bgcolor: 'white' }}>
+      <Box sx={{ borderBottom: '1px solid #E5E5E5', width: '100%', bgcolor: 'white' }}>
          <Container>
 
-            <AppBar position="static" sx={{ width: '100%', height: '56px', bgcolor: 'secondary.main', boxShadow: 'none' }} >
+            <AppBar position="static" sx={{ width: '100%', height: '50px', bgcolor: 'secondary.main', boxShadow: 'none' }} >
 
                <Toolbar disableGutters>
-                  <Button sx={{ display: { xs: 'block', lg: 'none' } }} onClick={toggleDrawer(true)}><MenuIcon /></Button>
+                  <Button sx={{ display: { xs: 'block', md: 'none' } }} onClick={toggleDrawer(true)}><MenuIcon /></Button>
                   <Drawer open={open} onClose={toggleDrawer(false)}>
                      {DrawerList}
                   </Drawer>
-                  <Box component="img" src={Logo} sx={{ mr: 2, height: { xs: '24px', md: '32px', lg: '40px' }, width: { xs: '24px', md: '32px', lg: '40px' } }} />
+                  <Box component="img" src={Logo} sx={{ mr: 1, height: { xs: '18px', md: '24px', lg: '30px' }, width: { xs: '18px', md: '24px', lg: '30px' } }} />
 
 
                   <Typography
-                     variant="h6"
-
-                     component="div"
-                     sx={{ display: { sm: 'block', color: 'text.primary', fontWeight: 'bold', fontSize: { xs: '10px', md: '16px', lg: '24px' } } }}
+                     variant='h6'
+                     sx={{ display: { sm: 'block'}, color: 'text.primary', fontWeight: 'bold', fontSize: { sm: '16px', md: '20px', lg: '24px' } } }
                   >
                      FuelNet
                   </Typography>
 
-                  <List sx={{ ml: 2, display: { xs: 'none', lg: 'flex' } }}>
+                  <List sx={{ display:{ xs :'none', md: 'flex'},    }}>
                      {nav_link.map(({ id, title, path }) => (
 
                         <ListItem
@@ -93,27 +91,31 @@ export default function Header() {
 
                            component={NavLink}
                            to={path}
-                           sx={{ my: 2, display: 'block' }}
+                           sx={{  display: 'block' }}
                         >
                            <NavLink
                               to={path}
                               className={({ isActive }) => (isActive ? 'active' : "")}
-                              style={{ color: title === "Видеофиксация" ? '#FF4E4E' : "#171429", fontWeight: '500', textDecoration: 'none', position: 'relative' }}>
-                              {title}
-                              {title === "Видеофиксация" && (
-                                 <Box component={"span"} sx={{
+                              style={{ textDecoration: 'none', position: 'relative' }}>
 
-                                    boxShadow: "0px 0px 5px 0px #FF4E4EB2",
-                                    marginLeft: '5px',
-                                    position: 'absolute',
-                                    bottom: '3px',
-                                    right: '-10px',
-                                    width: '8px',
-                                    height: '8px',
-                                    backgroundColor: 'error.main',
-                                    borderRadius: '50%'
-                                 }}></Box>
-                              )}</NavLink>
+                              <Box component={"span"} sx={{ color: title === "Видеофиксация" ? 'error.main' : "text.primary", fontWeight: '500', fontSize:{ xs: '12px',  lg: '14px' } }}>
+                                 {title}
+                                 {title === "Видеофиксация" && (
+                                    <Box component={"span"} sx={{
+
+                                       boxShadow: "0px 0px 5px 0px #FF4E4EB2",
+                                       marginLeft: '5px',
+                                       position: 'absolute',
+                                       bottom: '3px',
+                                       right: '-10px',
+                                       width: '8px',
+                                       height: '8px',
+                                       backgroundColor: 'error.main',
+                                       borderRadius: '50%'
+                                    }}></Box>
+                                 )}
+                              </Box>
+                           </NavLink>
                         </ListItem>
                      ))}
                   </List>
@@ -123,7 +125,7 @@ export default function Header() {
                         <Button
                            startIcon={<BlockOutlined />}
                            sx={{
-                              padding: { xs: '4px', md: '6px 10px' },
+                              padding: { xs: '4px', md: '4px 6px' },
                               backgroundColor: "#E0F1F6",
                               color: "text.primary",
                               borderRadius: '100px',
@@ -133,7 +135,7 @@ export default function Header() {
                            }}
                         >
 
-                           <Box component="span" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                           <Box component="span" sx={{ display: { xs: 'none', sm: 'block' }, whiteSpace: 'nowrap' }}>
                               Закрыть смену
                            </Box>
                         </Button>
@@ -141,7 +143,7 @@ export default function Header() {
                         <Button
                            startIcon={<CellTowerOutlined />}
                            sx={{
-                              padding: { xs: '3px', md: '5px 9px' },
+                              padding: { xs: '3px', md: '4px 6px' },
                               backgroundColor: "rgba(255, 78, 78, 0.1)",
                               color: "error.main",
                               borderRadius: '100px',
@@ -152,7 +154,7 @@ export default function Header() {
                            }}
                         >
 
-                           <Box component="span" sx={{ display: { xs: 'none', sm: 'block' } }}>
+                           <Box component="span" sx={{ display: { xs: 'none', sm: 'block' }, whiteSpace: 'nowrap' }}>
                               Aварийная остановка
                            </Box>
                         </Button>
