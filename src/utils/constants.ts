@@ -48,7 +48,7 @@ export const column_transactions:IColumnTransaction[] = [
   },
   {
     id: "price",
-    label: "Цена (сум/м³)",
+    label: "Цена (c/м³)",
     align: "left",
   },
   {

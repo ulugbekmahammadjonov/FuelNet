@@ -36,7 +36,7 @@ export default function Header() {
                >
                   <NavLink
                      to={path}
-                     className={({ isActive }) => isActive ? 'active' :""}
+                     className={({ isActive }) => isActive ? 'active' : ""}
                      style={{ color: title === "Видеофиксация" ? '#FF4E4E' : "#171429", fontWeight: '500', textDecoration: 'none', position: 'relative' }}>
                      {title}
                      {title === "Видеофиксация" && (
@@ -69,7 +69,7 @@ export default function Header() {
             <AppBar position="static" sx={{ width: '100%', height: '50px', bgcolor: 'secondary.main', boxShadow: 'none' }} >
 
                <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Button sx={{ display: { xs: 'block', md: 'none' } }} onClick={toggleDrawer(true)}><MenuIcon  /></Button>
+                  <Button sx={{ display: { xs: 'block', md: 'none' } }} onClick={toggleDrawer(true)}><MenuIcon /></Button>
                   <Drawer open={open} onClose={toggleDrawer(false)}>
                      {DrawerList}
                   </Drawer>
@@ -78,12 +78,12 @@ export default function Header() {
 
                   <Typography
                      variant='h6'
-                     sx={{ display: { sm: 'block'}, color: 'text.primary', fontWeight: 'bold', fontSize: { sm: '16px', md: '20px', lg: '24px' } } }
+                     sx={{ display: { sm: 'block' }, color: 'text.primary', fontWeight: 'bold', fontSize: { xs: '16px', md: '20px', lg: '24px' } }}
                   >
                      FuelNet
                   </Typography>
 
-                  <List sx={{ display:{ xs :'none', md: 'flex'},    }}>
+                  <List sx={{ display: { xs: 'none', md: 'flex' }, }}>
                      {nav_link.map(({ id, title, path }) => (
 
                         <ListItem
@@ -91,14 +91,14 @@ export default function Header() {
 
                            component={NavLink}
                            to={path}
-                           sx={{  display: 'block' }}
+                           sx={{ display: 'block' }}
                         >
                            <NavLink
                               to={path}
                               className={({ isActive }) => (isActive ? 'active' : "")}
                               style={{ textDecoration: 'none', position: 'relative' }}>
 
-                              <Box component={"span"} sx={{ color: title === "Видеофиксация" ? 'error.main' : "text.primary", fontWeight: '500', fontSize:{ xs: '12px',  lg: '14px' } }}>
+                              <Box component={"span"} sx={{ color: title === "Видеофиксация" ? 'error.main' : "text.primary", fontWeight: '500', fontSize: { xs: '12px', lg: '14px' } }}>
                                  {title}
                                  {title === "Видеофиксация" && (
                                     <Box component={"span"} sx={{
@@ -123,15 +123,16 @@ export default function Header() {
                   <Box sx={{ display: { xs: "flex" }, alignItems: 'center', gap: '10px' }}>
                      <Box sx={{ display: { xs: "flex", }, alignItems: 'center', gap: '10px' }}>
                         <Button
-                           startIcon={<BlockOutlined />}
+                           startIcon={<BlockOutlined sx={{display: {  sm: 'none', md: 'block' }}}/>}
                            sx={{
-                              padding: { xs: '4px', md: '4px 6px' },
+                              padding: { xs: '4px', md: '4px 8px' },
                               backgroundColor: "#E0F1F6",
                               color: "text.primary",
                               borderRadius: '100px',
                               textTransform: "none",
                               fontSize: { xs: '10px', md: '12px' },
                               letterSpacing: '2%',
+                              border: '1px solid #69757A',
                            }}
                         >
 
@@ -141,7 +142,7 @@ export default function Header() {
                         </Button>
 
                         <Button
-                           startIcon={<CellTowerOutlined />}
+                           startIcon={<CellTowerOutlined sx={{ display: {   sm: 'none', md: 'block' } }} />}
                            sx={{
                               padding: { xs: '3px', md: '4px 6px' },
                               backgroundColor: "rgba(255, 78, 78, 0.1)",

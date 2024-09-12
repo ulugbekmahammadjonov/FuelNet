@@ -6,6 +6,7 @@ import DataTable from '../components/data-table';
 import { column_transactions } from '../utils/constants';
 import { row_transactions } from '../utils/constants';
 import Helmet from '../components/helmet';
+import { Resizable } from 're-resizable';
 
 const Columns: React.FC = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
@@ -27,10 +28,10 @@ const Columns: React.FC = () => {
   return (
     <Container>
       <Helmet title="Колонки" />
-      <Box component={'div'} sx={{ height: "100vh", display: "flex", flexDirection: "column", mb: 2 }}>
-        <Box sx={{ flexGrow: 1, overflow: "auto", flexShrink: 1 }}>
-          <Card  /> 
-        </Box>
+      <Box component={'div'} sx={{ height: "100vh", display: "grid", mb: 2 }}>
+        
+      <Card />
+        
         <Box sx={{ flexShrink: 0, width: "100%", mt: 1 }}>
           <DataTable
             rows={row_transactions}

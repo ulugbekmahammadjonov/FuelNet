@@ -7,7 +7,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import { Box, Button } from '@mui/material';
+import { Box, Button, Chip, Typography } from '@mui/material';
 
 import arrowSvg from "../assets/images/arrow.svg";
 import element from "../assets/images/elements.svg";
@@ -52,7 +52,7 @@ export default function DataTable(props: DataTableProps) {
    const paginatedRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
    return (
-      <Resizable style={{ padding: '10px' }} defaultSize={{ width: '100%', height: 180 }} enable={{ top: true, right: false, bottom: false, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}>
+      <Resizable  defaultSize={{ width: '100%', height: 200 }} enable={{ top: true, right: false, bottom: false, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}>
          <Box
             sx={{ height: '100%', display: 'flex', flexDirection: 'column', mb: 2, backgroundColor: '#fff', borderRadius: '10px', }}
             // onMouseMove={handleMouseMove}
@@ -61,14 +61,17 @@ export default function DataTable(props: DataTableProps) {
 
             <Box
                component={"span"}
-               sx={{ width: '100%', display: 'block', height: '8px', backgroundColor: '#ccc', borderRadius: '10px', cursor: 'row-resize', mb: 2 }}
+               sx={{ width: '100%', display: 'block', height: '8px', backgroundColor: '#ccc', borderRadius: '10px', cursor: 'row-resize', mb: 1 }}
                // onMouseDown={handleMouseDown}
             ></Box>
-
-            <Box sx={{ flexGrow: 1, overflow: 'auto', flexShrink: 1, borderRadius: `10px`, backgroundColor: 'secondary.main', border: '1px solid #ccc' }}>
+         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+               <Typography variant='subtitle1' sx={{  color: 'text.primary', fontWeight: 'bold', padding: '0px' }}>Неоплаченный операции </Typography>
+               <Chip label={`${total} операции`} sx={{ fontSize: '12px', fontWeight: '500', color: '#171429', ml: 1 }} />
+         </Box>
+            <Box sx={{ flexGrow: 1, overflow: 'auto', flexShrink: 1, borderRadius: `10px`, backgroundColor: 'secondary.main', border: '2px solid #ccc', padding: '10px' }}>
                <Paper sx={{}}>
                   <TableContainer sx={{}}>
-                     <Table size='small' sx={{ border: "1px solid #E9E9E9" }}>
+                     <Table size='small' sx={{ border: "1px solid #E9E9E9",  }}>
                         <TableHead>
                            <TableRow>
                               {columns.map((column, index) => (
@@ -80,7 +83,7 @@ export default function DataTable(props: DataTableProps) {
                                     <Box sx={{
                                        display: index === columns.length - 1 ? 'block' : 'flex',
                                        justifyContent: index === columns.length - 1 ? 'center' : 'space-between',
-                                       alignItems: 'center',
+                                       alignItems: 'center', fontSize: { xs: '10px', md: '14px' },
                                     }}>
                                        <Box component='span' sx={{ padding: "0" }}>{column.label}</Box>
                                        {index < columns.length - 1 && (
@@ -137,6 +140,6 @@ export default function DataTable(props: DataTableProps) {
                </Paper>
             </Box>
          </Box>
-      </Resizable>
+        </Resizable>
    );
 }
