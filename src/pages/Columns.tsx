@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Box } from '@mui/material';
 import Container from '../components/UI/customContainer';
 import Card from '../components/card';
@@ -6,12 +6,12 @@ import DataTable from '../components/data-table';
 import { column_transactions } from '../utils/constants';
 import { row_transactions } from '../utils/constants';
 import Helmet from '../components/helmet';
-import { Resizable } from 're-resizable';
+
 
 const Columns: React.FC = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [pageIndex, setPageIndex] = useState(0);
-  // Initial height for the card
+  
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPageIndex(newPage);
@@ -22,7 +22,7 @@ const Columns: React.FC = () => {
     setPageIndex(0);
   };
 
-  const [cardHeight, setCardHeight] = useState<number>(270);
+  const [cardHeight, setCardHeight] = useState<number>(250);
 
 
 
@@ -34,6 +34,7 @@ const Columns: React.FC = () => {
       <Card cardHeight={cardHeight} />
         
         
+          {/* <Box  sx={{ flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}> */}
           <DataTable
             rows={row_transactions}
             columns={column_transactions}
@@ -44,6 +45,7 @@ const Columns: React.FC = () => {
             handleChangeRowsPerPage={handleChangeRowsPerPage}
             cardHeight={cardHeight} setCardHeight={setCardHeight}
           />
+          {/* </Box> */}
         
       </Box>
     </Container>

@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Box, Typography, Button } from '@mui/material';
 import AppsIcon from '@mui/icons-material/Apps';
@@ -13,18 +14,17 @@ interface GridContainerProps {
 
 const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
    const [columnsToShow, setColumnsToShow] = useState<number>(5);
-   const [height, setHeight] = useState<number>(500);
+   
    const gridContainerRef = useRef<HTMLDivElement | null>(null);
-   const [gap, setGap] = useState<number>(5); // Gap o'zgaruvchisi
+   const [gap, setGap] = useState<number>(5)
    const rowCount = 3;
 
    useEffect(() => {
       if (gridContainerRef.current) {
-         const gridHeight = window.innerHeight - cardHeight - 30; // 30px padding
+         const gridHeight = window.innerHeight - cardHeight - 30; 
          const newRowHeight = (gridHeight - (rowCount - 1) * gap) / rowCount;
          gridContainerRef.current.style.gridTemplateRows = `repeat(${rowCount}, ${newRowHeight}px)`;
 
-         // Dynamic gap calculation
          const newGap = Math.max(1, (gridHeight - newRowHeight * rowCount) / (rowCount - 1));
          setGap(newGap);
 
@@ -33,8 +33,7 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
             (item as HTMLElement).style.height = `${newRowHeight}px`;
          });
       }
-   }, [cardHeight, gap]); // Gap o'zgarishini kuzatamiz
-
+   }, [cardHeight, gap]); 
    const handleSelectChange = (value: number) => {
       setColumnsToShow(Number(value));
    };
@@ -58,11 +57,11 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                ref={gridContainerRef}
                sx={{
                   display: 'grid',
-                  gridTemplateColumns: `repeat(${columnsToShow}, 1fr)`, // Dynamic columns based on `columnsToShow`
+                  gridTemplateColumns: `repeat(${columnsToShow}, 1fr)`,
                   gridTemplateRows: `repeat(${rowCount}, 1fr)`,
-                  gap: `${gap}px`, // Dynamic gap
-                  padding: '5px',
-                  margin: '20px',
+                  gap: `${gap}px`, 
+                 
+                  marginBottom: '20px',
                   flexGrow: 1,
                   transition: 'grid-template-rows 0.1s ease',
                   // aspectRatio: "4/3",
@@ -77,11 +76,12 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                         flexDirection: 'column',
                         overflow: 'hidden',
                         padding: '2px',
-                        maxHeight: { xs: '110px', md: '130px', lg: '140px' },
+                        maxHeight: { xs: '100px', md: '125px', lg: '135px' },
                         maxWidth: '300px',
                         border: isActive ? '1px solid #3ABAAA' : '1px solid #FF4E4E',
                         borderRadius: { xs: '5px', md: '10px' },
                         position: 'relative',
+                        
                      }}
                   >
                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

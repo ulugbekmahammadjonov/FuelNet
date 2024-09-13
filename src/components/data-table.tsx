@@ -65,7 +65,7 @@ export default function DataTable(props: DataTableProps) {
 
       const handleMouseMove = (e: MouseEvent) => {
          const newHeight = startHeight - (e.clientY - startY);
-         if (newHeight >= 200) { // Minimal height
+         if (newHeight >= 200) { 
             setCardHeight(newHeight);
          }
       };
@@ -81,18 +81,19 @@ export default function DataTable(props: DataTableProps) {
 
    return (
       <StyledCard height={`${cardHeight}px`}>
+         <ResizeHandle
+            ref={handleRef}
+           
+            sx={{ width: '100%', display: 'block', height: '8px', backgroundColor: '#ccc', borderRadius: '10px', cursor: 'row-resize', mb: 1 }}
+            onMouseDown={handleMouseDown}
+         />
          <Box
             sx={{ height: '100%', display: 'flex', flexDirection: 'column', mb: 2, backgroundColor: '#fff', borderRadius: '10px', }}
          // onMouseMove={handleMouseMove}
          // onMouseUp={handleMouseUp}
          >
 
-            <Box
-            ref={handleRef}
-               component={"span"}
-               sx={{ width: '100%', display: 'block', height: '8px', backgroundColor: '#ccc', borderRadius: '10px', cursor: 'row-resize', mb: 1 }}
-             onMouseDown={handleMouseDown}
-            ></Box>
+            
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
                <Typography variant='subtitle1' sx={{ color: 'text.primary', fontWeight: 'bold', padding: '0px' }}>Неоплаченный операции </Typography>
                <Chip label={`${total} операции`} sx={{ fontSize: '12px', fontWeight: '500', color: '#171429', ml: 1 }} />
