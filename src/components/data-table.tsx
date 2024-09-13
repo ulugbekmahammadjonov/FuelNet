@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,8 +13,32 @@ import arrowSvg from "../assets/images/arrow.svg";
 import element from "../assets/images/elements.svg";
 import { DataTableProps, Row } from "../types/types";
 import { Resizable } from 're-resizable';
+import { styled } from '@mui/material/styles';
 
 
+const StyledCard = styled(Paper, { shouldForwardProp: (prop) => prop !== 'height' })<{ height: string }>(({ theme, height }) => ({
+   width: '100%',
+   height: height,
+   minHeight: '200px',
+   padding: theme.spacing(2),
+   border: `1px solid ${theme.palette.divider}`,
+   boxShadow: theme.shadows[1],
+   borderRadius: theme.shape.borderRadius,
+   backgroundColor: theme.palette.background.paper,
+   position: 'relative',
+   overflow: 'hidden',
+   bottom: 20,
+}));
+
+const ResizeHandle = styled(Box)(({ theme }) => ({
+   position: 'absolute',
+   top: 0,
+   left: 0,
+   width: '100%',
+   height: '10px',
+   cursor: 'n-resize',
+   background: 'rgba(0, 0, 0, 0.1)',
+}));
 
 export default function DataTable(props: DataTableProps) {
    const {
@@ -25,53 +49,58 @@ export default function DataTable(props: DataTableProps) {
       rowsPerPage = 5,
       handleChangePage = () => { },
       handleChangeRowsPerPage = () => { },
+      cardHeight = 200,
+      setCardHeight = () => { },
    } = props;
 
-   // const [tableHeight, setTableHeight] = useState(150);
-   // const [isDragging, setIsDragging] = useState(false);
-   // const [startY, setStartY] = useState(0);
 
-
-   // const handleMouseDown = (event: React.MouseEvent<HTMLDivElement>) => {
-   //    setIsDragging(true);
-   //    setStartY(event.clientY);
-   // };
-
-
-   // const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
-   //    if (!isDragging) return;
-   //    const diffY = startY - event.clientY;
-   //    setTableHeight((prevHeight) => Math.max(prevHeight + diffY, 100));
-   // };
-
-
-   // const handleMouseUp = () => {
-   //    setIsDragging(false);
-   // };
 
    const paginatedRows = rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+   const handleRef = useRef<HTMLDivElement | null>(null);
+
+   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.preventDefault();
+      const startY = e.clientY;
+      const startHeight = cardHeight;
+
+      const handleMouseMove = (e: MouseEvent) => {
+         const newHeight = startHeight - (e.clientY - startY);
+         if (newHeight >= 200) { // Minimal height
+            setCardHeight(newHeight);
+         }
+      };
+
+      const handleMouseUp = () => {
+         document.removeEventListener('mousemove', handleMouseMove);
+         document.removeEventListener('mouseup', handleMouseUp);
+      };
+
+      document.addEventListener('mousemove', handleMouseMove);
+      document.addEventListener('mouseup', handleMouseUp);
+   };
 
    return (
-      <Resizable  defaultSize={{ width: '100%', height: 200 }} enable={{ top: true, right: false, bottom: false, left: false, topRight: false, bottomRight: false, bottomLeft: false, topLeft: false }}>
+      <StyledCard height={`${cardHeight}px`}>
          <Box
             sx={{ height: '100%', display: 'flex', flexDirection: 'column', mb: 2, backgroundColor: '#fff', borderRadius: '10px', }}
-            // onMouseMove={handleMouseMove}
-            // onMouseUp={handleMouseUp}
+         // onMouseMove={handleMouseMove}
+         // onMouseUp={handleMouseUp}
          >
 
             <Box
+            ref={handleRef}
                component={"span"}
                sx={{ width: '100%', display: 'block', height: '8px', backgroundColor: '#ccc', borderRadius: '10px', cursor: 'row-resize', mb: 1 }}
-               // onMouseDown={handleMouseDown}
+             onMouseDown={handleMouseDown}
             ></Box>
-         <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-               <Typography variant='subtitle1' sx={{  color: 'text.primary', fontWeight: 'bold', padding: '0px' }}>Неоплаченный операции </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+               <Typography variant='subtitle1' sx={{ color: 'text.primary', fontWeight: 'bold', padding: '0px' }}>Неоплаченный операции </Typography>
                <Chip label={`${total} операции`} sx={{ fontSize: '12px', fontWeight: '500', color: '#171429', ml: 1 }} />
-         </Box>
+            </Box>
             <Box sx={{ flexGrow: 1, overflow: 'auto', flexShrink: 1, borderRadius: `10px`, backgroundColor: 'secondary.main', border: '2px solid #ccc', padding: '10px' }}>
                <Paper sx={{}}>
                   <TableContainer sx={{}}>
-                     <Table size='small' sx={{ border: "1px solid #E9E9E9",  }}>
+                     <Table size='small' sx={{ border: "1px solid #E9E9E9", }}>
                         <TableHead>
                            <TableRow>
                               {columns.map((column, index) => (
@@ -140,6 +169,6 @@ export default function DataTable(props: DataTableProps) {
                </Paper>
             </Box>
          </Box>
-        </Resizable>
+      </StyledCard>
    );
 }

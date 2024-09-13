@@ -75,4 +75,6 @@ export interface DataTableProps {
   handleChangeRowsPerPage?: (
     event: React.ChangeEvent<HTMLInputElement>
   ) => void;
+  cardHeight: number;
+  setCardHeight: (height: number) => void;
 }

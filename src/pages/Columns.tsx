@@ -22,17 +22,18 @@ const Columns: React.FC = () => {
     setPageIndex(0);
   };
 
+  const [cardHeight, setCardHeight] = useState<number>(270);
 
 
 
   return (
     <Container>
       <Helmet title="Колонки" />
-      <Box component={'div'} sx={{ height: "100vh", display: "grid", mb: 2 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between' }}>
         
-      <Card />
+      <Card cardHeight={cardHeight} />
         
-        <Box sx={{ flexShrink: 0, width: "100%", mt: 1 }}>
+        
           <DataTable
             rows={row_transactions}
             columns={column_transactions}
@@ -41,8 +42,9 @@ const Columns: React.FC = () => {
             rowsPerPage={rowsPerPage}
             handleChangePage={handleChangePage}
             handleChangeRowsPerPage={handleChangeRowsPerPage}
+            cardHeight={cardHeight} setCardHeight={setCardHeight}
           />
-        </Box>
+        
       </Box>
     </Container>
   );
