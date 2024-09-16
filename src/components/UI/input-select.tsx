@@ -1,33 +1,50 @@
 import React from 'react';
-import { Box, Typography, OutlinedInput, FormControl, FormHelperText, Select, MenuItem } from '@mui/material';
+import { Box, OutlinedInput, FormControl, Select, MenuItem } from '@mui/material';
+
 const CustomInputSelect: React.FC = () => {
    return (
-      <Box sx={{ padding: "0", margin: "0" }} >
-         <FormControl sx={{ display: "flex" }}>
-            <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ padding: "0", margin: "0" }}>
+         <FormControl sx={{ display: "flex", padding: "0", margin: "0" }}>
+            <Box sx={{ display: "flex", alignItems: "center", padding: "0", margin: "0" }}>
                <OutlinedInput
-
                   type="text"
-
-
                   sx={{
-                     maxWidth: '100px',
-                     
                      border: 'none',
                      borderRight: 'none',
-                     borderRadius: '10px 0px 0px 10px',
+                     borderRadius: '5px 0px 0px 5px',
                      backgroundColor: '#f5f5f5',
                      outline: 'none',
-                     // color: "#69757A",
-                     height: {xs: '11px', sm: '13px', md: '15px', lg: '18px' },
-                     fontSize: { xs: '10px', md: '12px', lg: '14px' }
+                     boxSizing: "border-box",
+                     maxHeight: { xs: '15px', md: '20px' },
+                     fontSize: { xs: '10px', md: '12px', lg: '14px' },
+                     width: "100%",
                   }}
-
                />
-               <Select defaultValue={10} sx={{ border: 'none', borderRadius: '0px 10px 10px 0px', height: {xs: '11px', sm: '13px', md: '15px', lg: '18px' }, fontSize: { xs: "6px", md: "10px" }, width: "100%" }}>
-                  <MenuItem value={10}>Полный бак</MenuItem>
-                  <MenuItem value={20}>Twenty</MenuItem>
-                  <MenuItem value={30}>Thirty</MenuItem>
+               <Select
+                  autoWidth
+                  defaultValue={10}
+                  sx={{
+                     border: 'none',
+                     borderRadius: '0px 5px 5px 0px',
+                     maxHeight: { xs: '15px', md: '20px' },
+                     padding: "0px",
+                     fontSize: { xs: '7px', md: '9px' },
+                     minWidth: "55%",
+                     boxSizing: "border-box",
+                     outline: "none",
+                     margin: 0,
+                  }}
+                  MenuProps={{
+                     PaperProps: {
+                        sx: {
+                           padding: 0,
+                        },
+                     },
+                  }}
+               >
+                  <MenuItem sx={{ padding: "2px", fontSize: { xs: '10px', md: '12px' } }} value={10}>Полный бак</MenuItem>
+                  <MenuItem sx={{ padding: "2px", fontSize: { xs: '10px', md: '12px' } }} value={20}>Twenty</MenuItem>
+                  <MenuItem sx={{ padding: "2px", fontSize: { xs: '10px', md: '12px' } }} value={30}>Thirty</MenuItem>
                </Select>
             </Box>
          </FormControl>

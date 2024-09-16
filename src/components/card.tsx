@@ -14,16 +14,16 @@ interface GridContainerProps {
 
 const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
    const [columnsToShow, setColumnsToShow] = useState<number>(5);
-   
+
    const gridContainerRef = useRef<HTMLDivElement | null>(null);
    const [gap, setGap] = useState<number>(5)
    const rowCount = 3;
 
    useEffect(() => {
       if (gridContainerRef.current) {
-         const gridHeight = window.innerHeight - cardHeight - 30; 
+         const gridHeight = window.innerHeight - cardHeight - 30;
          const newRowHeight = (gridHeight - (rowCount - 1) * gap) / rowCount;
-         gridContainerRef.current.style.gridTemplateRows = `repeat(${rowCount}, ${newRowHeight}px)`;
+         // gridContainerRef.current.style.gridTemplateRows = `repeat(${rowCount}, ${newRowHeight}px)`;
 
          const newGap = Math.max(1, (gridHeight - newRowHeight * rowCount) / (rowCount - 1));
          setGap(newGap);
@@ -33,7 +33,7 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
             (item as HTMLElement).style.height = `${newRowHeight}px`;
          });
       }
-   }, [cardHeight, gap]); 
+   }, [cardHeight, gap]);
    const handleSelectChange = (value: number) => {
       setColumnsToShow(Number(value));
    };
@@ -41,7 +41,7 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
    const visibleColumns = column_data.slice(0, columnsToShow * 3);
 
    return (
-      <Box>
+     
          <Box
             component={'div'}
             sx={{ margin: '0 auto', maxWidth: '1200px', width: '100%', minHeight: '100px', height: '100%', flexGrow: 1 }}
@@ -58,13 +58,18 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                sx={{
                   display: 'grid',
                   gridTemplateColumns: `repeat(${columnsToShow}, 1fr)`,
-                  gridTemplateRows: `repeat(${rowCount}, 1fr)`,
-                  gap: `${gap}px`, 
-                 
+                  // gridTemplateRows: `repeat(${rowCount}, 1fr)`,
+                  gap: `10px`,
+                  justifyContent: 'center',
+                  // maxHeight: '70vh',
                   marginBottom: '20px',
-                  flexGrow: 1,
+                  // flexGrow: 1,
                   transition: 'grid-template-rows 0.1s ease',
-                  // aspectRatio: "4/3",
+                  //  maxWidth: '1000px',
+                  //  aspectRatio: "4/3",
+                  //  maxHeight: '750px',
+                  // height: "auto",
+                 
                }}
             >
                {visibleColumns.map(({ digit, isActive }) => (
@@ -75,17 +80,19 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                         display: 'flex',
                         flexDirection: 'column',
                         overflow: 'hidden',
-                        padding: '2px',
-                        maxHeight: { xs: '100px', md: '125px', lg: '135px' },
-                        maxWidth: '300px',
+                        gap: '3px',
+                        padding: { xs: '4px', md: '5px' },
+                        width: '100%',
+                        maxWidth: '240px',
                         border: isActive ? '1px solid #3ABAAA' : '1px solid #FF4E4E',
                         borderRadius: { xs: '5px', md: '10px' },
                         position: 'relative',
-                        
+                        maxHeight: { xs: '120px', md: '150px' },
+                        aspectRatio:'3/2',
                      }}
                   >
                      <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                        <Typography sx={{ fontWeight: 'bold', fontSize: { xs: '6px', sm: '8px', md: '12px' } }}>
+                        <Typography sx={{ fontWeight: 'bold', fontSize: { xs: '8px', sm: '10px',  } }}>
                            #{digit}
                         </Typography>
                         <Box
@@ -101,25 +108,25 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                               width: { xs: '60px', md: '80px' },
                               margin: '0 auto',
                               textAlign: 'center',
-                              borderRadius: '0 0 10px 10px',
+                              borderRadius: '0 0 5px 5px',
                            }}
                         >
                            {isActive ? 'Подключена' : 'Нет связи'}
                         </Box>
-                        <AppsIcon sx={{ color: 'text.main', ':hover': { color: 'primary.main', cursor: 'pointer' }, fontSize: { xs: '8px', sm: '10px', md: '12px', lg: '16px' } }} />
+                        <AppsIcon sx={{ color: 'text.main', ':hover': { color: 'primary.main', cursor: 'pointer' }, fontSize: { xs: '8px', md: '10px',  } }} />
                      </Box>
 
                      <Box component={'div'} sx={{ display: 'flex', justifyContent: 'space-between', padding: '0', gap: 1 }}>
                         {card_data.map((data, index) => (
-                           <Input key={index} label={data.label} defaultValue={data.value} readOnly={true} sx={{ padding: '2px', maxWidth: { xs: '60px', md: '70px' }, fontSize: { xs: '6px', md: '10px' } }} />
+                           <Input key={index} label={data.label} defaultValue={data.value} readOnly={true} sx={{ padding: '3px', fontSize: { xs: '7px', md: '10px' }, maxWidth: "132px" }} />
                         ))}
                      </Box>
                      <Box component={'div'} sx={{ display: 'flex', justifyContent: 'space-between', padding: '0', gap: 1 }}>
-                        <Input label="Объем (м³)" defaultValue="0" readOnly={true} sx={{ padding: { xs: '1px 2px', md: '2px 4px' }, maxWidth: { xs: '80px', md: '100px' }, fontSize: { xs: '6px', md: '10px' } }} />
-                        <Input label="Сумма (сум)" defaultValue="0" readOnly={true} sx={{ padding: { xs: '1px 2px', md: '2px 4px' }, maxWidth: { xs: '80px', md: '100px' }, fontSize: { xs: '6px', md: '10px' } }} />
+                        <Input label="Объем (м³)" defaultValue="0" readOnly={true} sx={{ padding: "3px", fontSize: { xs: '10px', md: '12px' }, flexGrow: 1 }} />
+                        <Input label="Сумма (сум)" defaultValue="0" readOnly={true} sx={{ padding: "3px", fontSize: { xs: '10px', md: '12px' }, flexGrow: 1 }} />
                      </Box>
 
-                     <Box sx={{ marginTop: { xs: '1px', md: '2px' }, mb: 1 }}>
+                     <Box sx={{ }}>
                         <CustomInputSelect />
                      </Box>
                      <Button
@@ -127,9 +134,9 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                         color="secondary"
                         sx={{
                            width: '100%',
-                           height: { xs: '11px', sm: '13px', md: '15px', lg: '18px' },
+                           height: { xs: "15px", md: '20px'},
                            backgroundColor: 'primary.main',
-                           borderRadius: '10px',
+                           borderRadius: '5px',
                            textTransform: 'none',
                            opacity: isActive ? 1 : 0.2,
                            pointerEvents: isActive ? 'auto' : 'none',
@@ -142,7 +149,7 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
                ))}
             </Box>
          </Box>
-      </Box>
+   
    );
 };
 

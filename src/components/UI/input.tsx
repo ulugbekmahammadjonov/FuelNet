@@ -16,10 +16,10 @@ const CustomInput: React.FC<InputProps> = ({
 
 
    return (
-      <Box >
-         <FormControl >
+      
+         <FormControl sx={{ display: "flex", padding: "0", margin: "0" }}>
             {/* <label style={{ display: 'block', fontSize: "12px", }}>{label}</label> */}
-            <FormHelperText sx={{ fontSize: { xs: "4px", sm : "5px", md: "9px" }, margin: '0', whiteSpace: 'nowrap' }}>{label}</FormHelperText>
+            <FormHelperText sx={{ fontSize: { xs: '7px', md: '9px' }, margin: '0', whiteSpace: 'nowrap' }}>{label}</FormHelperText>
             <OutlinedInput
 
                type="text"
@@ -28,18 +28,18 @@ const CustomInput: React.FC<InputProps> = ({
                multiline
                sx={{
 
-                  // border: '1px solid #E9E9E9',
+                  boxSizing: "border-box",
                   borderRadius: '5px',
                   backgroundColor: '#f5f5f5',
                   outline: 'none',
                   // padding: '5px 10px',
-                  height: { xs: '11px', sm: '13px', md: '15px', lg: '18px' },
+                  maxHeight: { xs: '15px', md: '20px',  },
                   ...sx
                }}
 
             />
          </FormControl>
-      </Box>
+    
    );
 };
 

@@ -27,7 +27,9 @@ const StyledCard = styled(Paper, { shouldForwardProp: (prop) => prop !== 'height
    backgroundColor: theme.palette.background.paper,
    position: 'relative',
    overflow: 'hidden',
-   bottom: 20,
+   bottom: 0,
+   
+   
 }));
 
 const ResizeHandle = styled(Box)(({ theme }) => ({
@@ -36,7 +38,7 @@ const ResizeHandle = styled(Box)(({ theme }) => ({
    left: 0,
    width: '100%',
    height: '10px',
-   cursor: 'n-resize',
+   cursor: 'pointer',
    background: 'rgba(0, 0, 0, 0.1)',
 }));
 
@@ -98,7 +100,7 @@ export default function DataTable(props: DataTableProps) {
                <Typography variant='subtitle1' sx={{ color: 'text.primary', fontWeight: 'bold', padding: '0px' }}>Неоплаченный операции </Typography>
                <Chip label={`${total} операции`} sx={{ fontSize: '12px', fontWeight: '500', color: '#171429', ml: 1 }} />
             </Box>
-            <Box sx={{ flexGrow: 1, overflow: 'auto', flexShrink: 1, borderRadius: `10px`, backgroundColor: 'secondary.main', border: '2px solid #ccc', padding: '10px' }}>
+            {/* <Box sx={{ flexGrow: 1, overflow: 'auto', flexShrink: 1, borderRadius: `10px`, backgroundColor: 'secondary.main', border: '2px solid #ccc', padding: '10px' }}> */}
                <Paper sx={{}}>
                   <TableContainer sx={{}}>
                      <Table size='small' sx={{ border: "1px solid #E9E9E9", }}>
@@ -168,7 +170,7 @@ export default function DataTable(props: DataTableProps) {
                      </Table>
                   </TableContainer>
                </Paper>
-            </Box>
+            {/* </Box> */}
          </Box>
       </StyledCard>
    );
