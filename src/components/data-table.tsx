@@ -101,8 +101,8 @@ export default function DataTable(props: DataTableProps) {
                <Chip label={`${total} операции`} sx={{ fontSize: '12px', fontWeight: '500', color: '#171429', ml: 1 }} />
             </Box>
             {/* <Box sx={{ flexGrow: 1, overflow: 'auto', flexShrink: 1, borderRadius: `10px`, backgroundColor: 'secondary.main', border: '2px solid #ccc', padding: '10px' }}> */}
-            <Paper sx={{}}>
-               <TableContainer sx={{}}>
+            <Paper sx={{overflow:"auto"}}>
+               <TableContainer sx={{ }}>
                   <Table size='small' sx={{ border: "1px solid #E9E9E9", }}>
                      <TableHead>
                         <TableRow>
@@ -126,7 +126,7 @@ export default function DataTable(props: DataTableProps) {
                            ))}
                         </TableRow>
                      </TableHead>
-                     <TableBody>
+                     <TableBody >
                         {paginatedRows.length > 0 ? (
                            paginatedRows.map((row, rowIndex) => (
                               <TableRow hover role="checkbox" tabIndex={-1} key={rowIndex}>
