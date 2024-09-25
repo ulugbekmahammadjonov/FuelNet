@@ -10,7 +10,7 @@ import Helmet from '../components/helmet';
 const Columns: React.FC = () => {
   const [rowsPerPage, setRowsPerPage] = useState(5);
   const [pageIndex, setPageIndex] = useState(0);
-  const [cardHeight, setCardHeight] = useState<number>(240);
+  const [cardHeight, setCardHeight] = useState<number>(200);
 
   // const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('xl'));
 
@@ -34,9 +34,9 @@ const Columns: React.FC = () => {
   return (
     <Container>
       <Helmet title="Колонки" />
-      <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%', justifyContent: 'space-between',  }}>
+      <Box sx={{ display: "grid", gridTemplateRows: "1fr auto", height: "100vh"  }}>
         <Card cardHeight={cardHeight} />
-        <Box sx={{  display: 'flex', flexDirection: 'column', alignItems: 'end', width: '100%',   }}>
+        <Box sx={{  display: 'flex', flexDirection: 'column', justifyContent:"flex-end", height: '100%'  }}>
           <DataTable
             rows={row_transactions}
             columns={column_transactions}

@@ -63,7 +63,7 @@ const CustomCard: React.FC<GridContainerProps> = ({ cardHeight }) => {
 
       <Box
          component={'div'}
-         sx={{ margin: '0 auto', maxWidth: '1200px', width: '100%', minHeight: '100px', height: '100%', flexGrow: 1 }}
+         sx={{ margin: '0 auto ', maxWidth: '1200px', width: '100%', minHeight: '100px', height: '100%', flexGrow: 1 }}
       >
          <Box component={'div'} sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
             <Typography variant="h6" sx={{ color: 'text.primary', fontWeight: 'bold', fontSize: '16px' }}>Колонки</Typography>
