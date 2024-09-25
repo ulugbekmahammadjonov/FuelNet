@@ -8,13 +8,14 @@ import { Container as MuiContainer, } from '@mui/material';
 //    children: React.ReactNode;
 // }
 
-const Container: React.FC<ContainerProps> = ({ children, ...props }) => {
+const    Container: React.FC<ContainerProps> = ({ children, ...props }) => {
    return (
       <MuiContainer
          maxWidth={false}
          sx={{
             paddingX: '10px',
             // margin: '0 auto',
+          
           
             width: '100%',
             maxWidth:{

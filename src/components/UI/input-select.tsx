@@ -1,7 +1,10 @@
 import React from 'react';
 import { Box, OutlinedInput, FormControl, Select, MenuItem } from '@mui/material';
-
-const CustomInputSelect: React.FC = () => {
+import { ArrowDropDown } from '@mui/icons-material';
+interface InputSelectProps {
+   cardWidth: number
+}
+const CustomInputSelect: React.FC<InputSelectProps> = ({cardWidth}) => {
    return (
       <Box sx={{ padding: "0", margin: "0" }}>
          <FormControl sx={{ display: "flex", padding: "0", margin: "0" }}>
@@ -11,28 +14,32 @@ const CustomInputSelect: React.FC = () => {
                   sx={{
                      border: 'none',
                      borderRight: 'none',
-                     borderRadius: '5px 0px 0px 5px',
+                     borderRadius: `calc(${cardWidth}px / ${46}) 0px 0px calc(${cardWidth}px / ${46})`,
                      backgroundColor: '#f5f5f5',
                      outline: 'none',
                      boxSizing: "border-box",
-                     maxHeight: { xs: '15px', md: '20px' },
-                     fontSize: { xs: '10px', md: '12px', lg: '14px' },
+                     maxHeight: `calc(${cardWidth}px / ${11})`,
+                     fontSize: `calc(${cardWidth}px / ${20})`,
                      width: "100%",
                   }}
                />
                <Select
                   autoWidth
                   defaultValue={10}
+                  IconComponent={(props)=>(
+                     <ArrowDropDown {...props} sx={{color: 'black', fontSize: `calc(${cardWidth}px / ${10})`}} />
+                  )}
                   sx={{
                      border: 'none',
-                     borderRadius: '0px 5px 5px 0px',
-                     maxHeight: { xs: '15px', md: '20px' },
+                     borderRadius: `0px calc(${cardWidth}px / ${46})  calc(${cardWidth}px / ${46}) 0px`,
+                     maxHeight: `calc(${cardWidth}px / ${11})`,
                      padding: "0px",
-                     fontSize: { xs: '7px', md: '9px' },
+                     fontSize: `calc(${cardWidth}px / ${20})`,
                      minWidth: "55%",
                      boxSizing: "border-box",
                      outline: "none",
                      margin: 0,
+                    
                   }}
                   MenuProps={{
                      PaperProps: {
@@ -42,9 +49,9 @@ const CustomInputSelect: React.FC = () => {
                      },
                   }}
                >
-                  <MenuItem sx={{ padding: "2px", fontSize: { xs: '10px', md: '12px' } }} value={10}>Полный бак</MenuItem>
-                  <MenuItem sx={{ padding: "2px", fontSize: { xs: '10px', md: '12px' } }} value={20}>Twenty</MenuItem>
-                  <MenuItem sx={{ padding: "2px", fontSize: { xs: '10px', md: '12px' } }} value={30}>Thirty</MenuItem>
+                  <MenuItem sx={{ padding: "2px",  fontSize: `calc(${cardWidth}px / ${20})` }} value={10}>Full tank</MenuItem>
+                  <MenuItem sx={{ padding: "2px",  fontSize: `calc(${cardWidth}px / ${20})` }} value={20}>Twenty</MenuItem>
+                  <MenuItem sx={{ padding: "2px",  fontSize: `calc(${cardWidth}px / ${20})` }} value={30}>Thirty</MenuItem>
                </Select>
             </Box>
          </FormControl>

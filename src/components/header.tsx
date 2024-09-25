@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
-import { Avatar, Button, List, ListItem } from '@mui/material';
+import { Avatar, Button, Divider, List, ListItem } from '@mui/material';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -63,7 +63,7 @@ export default function Header() {
 
 
    return (
-      <Box sx={{ borderBottom: '1px solid #E5E5E5', width: '100%', bgcolor: 'white' }}>
+      <Box sx={{  width: '100%', bgcolor: 'white',}}>
          <Container>
 
             <AppBar position="static" sx={{ width: '100%', height: '50px', bgcolor: 'secondary.main', boxShadow: 'none' }} >
@@ -172,9 +172,10 @@ export default function Header() {
                </Toolbar>
 
             </AppBar>
-
+ 
 
          </Container>
+         <Divider sx={{position:"absolute", width:"100%",left:"0",  }}/>
       </Box>
    );
 }

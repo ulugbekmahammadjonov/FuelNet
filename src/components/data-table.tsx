@@ -25,10 +25,10 @@ const StyledCard = styled(Paper, { shouldForwardProp: (prop) => prop !== 'height
    boxShadow: theme.shadows[1],
    borderRadius: theme.shape.borderRadius,
    backgroundColor: theme.palette.background.paper,
-   position: 'relative',
-   overflow: 'hidden',
-   bottom: 0,
    
+   overflow: 'hidden',
+  
+   position: 'relative',
    
 }));
 

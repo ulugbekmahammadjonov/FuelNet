@@ -45,6 +45,7 @@ export interface IRowTransaction {
   summa: string;
 }
 export interface InputProps {
+  cardWidth: number;
   label: string;
   width?: string;
   defaultValue?: string;
@@ -53,7 +54,7 @@ export interface InputProps {
   readOnly?: boolean;
   sx?: object;
 }
- export interface SelectProps {
+export interface SelectProps {
   options: { value: number | string }[];
   defaultValue?: string | number;
   onChange: (value: string | number) => void;
