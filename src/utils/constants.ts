@@ -93,15 +93,7 @@ export const row_transactions: IRowTransaction[] = [
   //   volume: "10.160",
   //   summa: "1900.0",
   // },
-  // {
-  //   id: 4,
-  //   numeral: 4,
-  //   time: new Date().toString(),
-  //   price: "3800.0",
-  //   volume: "10.160",
-  //   summa: "1900.0",
-  // },
-
+  //
   // {
   //   id: 5,
   //   numeral: 5,
