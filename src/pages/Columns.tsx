@@ -12,15 +12,6 @@ const Columns: React.FC = () => {
   const [pageIndex, setPageIndex] = useState(0);
   const [cardHeight, setCardHeight] = useState<number>(200);
 
-  // const isSmallScreen = useMediaQuery((theme: Theme) => theme.breakpoints.up('xl'));
-
-  // useEffect(() => {
-  //   if (isSmallScreen) {
-  //     setCardHeight(380);
-  //   } else {
-  //     setCardHeight(250);
-  //   }
-  // }, [  isSmallScreen]); // Bu effect media query natijasiga qarab faqat ekranning o'zgarishi bilan ishlaydi
 
   const handleChangePage = (event: unknown, newPage: number) => {
     setPageIndex(newPage);
