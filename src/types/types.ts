@@ -1,4 +1,4 @@
-import { SixK } from "./../../node_modules/@mui/icons-material/index.d";
+
 import { ReactNode } from "react";
 import { ButtonProps } from "@mui/material";
 export interface IRoute {

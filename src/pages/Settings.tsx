@@ -6,7 +6,7 @@ const Settings = () => {
   return (
     <Container>
       <Helmet title="Настройки" />
-      <h1>Settings</h1>
+      <h3>Settings</h3>
     </Container>
   )
 }
